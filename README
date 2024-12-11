@@ -1,1 +1,43 @@
 README file
+
+WORD PREDICTION FROM A RADIX TREE
+
+## Introduction
+This project uses a radix prefix tree to store words. This tree provides word suggestions to the user based on an input prefix. An interactive menu function allows a user to build the radix tree using several file options, insert words, search words, delete words, and retrieve word suggestions that match a prefix or character entered by the user.
+
+## Background
+A radix tree (also known as a Patricia tree) is an unbalanced data structure that stores characters or strings inside of nodes. It is very similar to a trie structure, which stores characters only. By storing strings, a radix tree is a space optimized version of a trie. This decreases the height of the structure by combining nodes. For the application of storing words, a radix tree is a comparable option to a binary search tree. The search, insert, and delete functions of radix trees are typically linear for worst case scenario. This is also the worst case scenario time complexity of a binary search tree.
+Searching through long strings would likely cause worst case scenario for a binary search tree, making them similar options in terms of time complexity.
+
+## Project Walk Through
+For this project, I created a Node structure. The node structure has three members: string data, bool isLeaf, and an array of children Nodes. The data is the prefix string stored within the node. The isLeaf member marks the node as the end of a word if true. Each node can have up to 26 child nodes (for every letter of the alphabet). This 26 is stored in a variable called BRANCHING_FACTOR. A radix tree class was created to store the constructer and deconstructer. I placed the functions outside of class because it made it easier to call them for tests within the main.cpp file.
+
+The first major function was insert. This recursive function covers four different cases of types of insert: input has leftover suffix (input: slower, existing node: slow), input is shorter than existing node (input: slow, existing node: slower), input partially matches an exisitng (input: start, existing: stamp), and an input that matches an existing node. Several helper functions aid insert by comparing the input with node data and finding the first mismatched letter, checking child nodes, and splitting existing nodes.
+
+The searchWord and deleteWord functions recursively traverse the tree to find the input. The search function returns a bool value if the input word is present. The delete function permanently deletes the word if it is found.
+
+The other key function in this project is printSuggestion. It recursively traverses the tree using pre-order traversal. It prints out each word inside of tree that matches the input prefix or character.
+
+Several functions were also designed to create a menu. This menu allows the user to build and interact with the radix tree.
+
+The files containing the 100 and 1000 most common words were pulled from other github repositries. I have linked these in my references.
+
+## How to Use
+To run the project, I used the main.cpp file. I would call functions or run tests from this file by selecting the g++ Build and Debug active file option on the debugger tab in VScode.
+
+To access the menu, simply use the debugger on the main.cpp as dexcribed above. The only line in the main function should be menu().
+
+User input is not case sensitive. A few lines of code convert all user input in the menu into lowercase. However, if a custom file is used, it must be lowercase.
+
+## REFERENCES:
+1. Meil˘A, M., ©2002. (2019). STAT 534 lecture 4. https://sites.stat.washington.edu/mmp/courses/stat534/spring19/Handouts/l4-radix-trees.pdf
+2. Wikipedia contributors. (2024, June 22). Radix tree. Wikipedia. https://en.wikipedia.org/wiki/Radix_tree
+3. Booker, E. Z. (2020, October 19). Radix Tree [Compact version of Trie]. OpenGenus IQ: Learn Algorithms, DL, System Design. https://iq.opengenus.org/radix-tree/
+4. Radix Tree in Julia - Lior Sinai. (2024, March 21). https://liorsinai.github.io/coding/2024/03/21/radix-tree.html#print-tree
+5. 1,000 most common US English words. (n.d.). Gist. https://gist.github.com/deekayen/4148741
+6. A list of 100 most common English words ordered by use frequency (Source: Wikipedia). (n.d.). Gist. https://gist.github.com/HasheeLeo/e5bd5bbc5213d25340de4809de31c52e
+7. Trie in C++ :: AlgoTree. (n.d.). https://algotree.org/algorithms/trie/
+8. C++ File Handling. (n.d.). https://www.programiz.com/cpp-programming/file-handling
+9. GeeksforGeeks. (2024, October 11). Substring in C++. GeeksforGeeks. https://www.geeksforgeeks.org/substring-in-cpp/
+10. Radix Tree Implementation in c. (n.d.). Code Review Stack Exchange. https://codereview.stackexchange.com/questions/251347/radix-tree-implementation-in-c
+11. GeeksforGeeks. (2023, March 11). tolower() Function in C++. GeeksforGeeks. https://www.geeksforgeeks.org/tolower-function-in-cpp/
