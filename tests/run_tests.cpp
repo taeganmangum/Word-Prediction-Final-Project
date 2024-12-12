@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//These are some of the tests that I used throughout making my project. They are not in order or important to the actual project, this is just supplemental material. I would run them by copying them to main.cpp and running them there.
+//These are some of the tests that I used throughout making my project. I mainly used the debugger to walk through each function and scenario. These tests are not in order or complete, this is just supplemental material. When used, I ran them by copying them to main.cpp and running the debugger.
 
 int main() {
     //lookup Word tests
