@@ -2,6 +2,9 @@ README file
 
 # WORD PREDICTION FROM A RADIX TREE
 
+## Video Walk Through
+This project is usable and runs. I made a video walkthrough of the project in case there are any issues. Here is the link: https://youtu.be/ujfxmOttEXg
+
 ## Introduction
 This project uses a radix prefix tree to store words. This tree provides word suggestions to the user based on an input prefix. An interactive menu function allows a user to build the radix tree using several file options, and then they can insert words, search words, delete words, and enter a prefix or character to retrieve word suggestions that match it.
 
